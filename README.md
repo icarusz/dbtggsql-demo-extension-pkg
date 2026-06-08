@@ -17,11 +17,15 @@ That's it. No separate render scripts. No post-hooks. No BI tool.
 
 ## how it works
 
-Place `.ggsql` files in a `visualizations/` folder inside your dbt project. After `dbt build` runs, `dbt-ggsql` executes each query through the ggsql CLI and collects the Vega-Lite output. It writes:
+Place `.ggsql` files in a `visualizations/` folder inside your dbt project. After `dbt build` runs, `dbt-ggsql` executes each query through the ggsql CLI and collects the Vega-Lite output. The output format is configurable:
 
-- `output/charts/<name>.html` — one self-contained chart per file
-- `output/visualizations.html` — a summary grid of all charts
-- `visualizations.qmd` — a Quarto document embedding all charts as live ggsql cells
+| `--output` | what you get |
+|---|---|
+| `html` *(default)* | `output/visualizations.html` — self-contained SVG grid, works in any browser or static viewer |
+| `qmd` | `visualizations.qmd` — Quarto document with live ggsql cells and SQL visible via code-fold |
+| `both` | both files |
+
+Individual charts always write to `output/charts/<name>.html`.
 
 ```
 nba_dbt/
@@ -44,9 +48,13 @@ Consecutive files that share a prefix render side-by-side in the summary grid: `
 ## cli
 
 ```bash
-dbt-ggsql build           # dbt build + all visualizations
-dbt-ggsql viz             # visualizations only (skips dbt)
-dbt-ggsql report          # regenerate summary HTML from existing charts
+dbt-ggsql build                        # dbt build + visualizations → html (default)
+dbt-ggsql build --output qmd           # dbt build + visualizations → quarto doc
+dbt-ggsql build --output both          # dbt build + visualizations → html + quarto
+
+dbt-ggsql viz                          # visualizations only (skip dbt build)
+dbt-ggsql report                       # re-render and regenerate html (default)
+dbt-ggsql report --output qmd          # re-render and regenerate quarto doc
 ```
 
 ## quick start
@@ -63,11 +71,9 @@ open nba_dbt/output/visualizations.html
 
 ## sample output
 
-**[visualizations summary →](https://htmlpreview.github.io/?https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_visualizations.html)** — all charts from one `dbt-ggsql build` run: shot charts, efficiency comparisons, and player scatter plots.
+**[visualizations.html →](https://htmlpreview.github.io/?https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_visualizations.html)** (`--output html`) — self-contained SVG grid: shot charts, efficiency comparisons, and player scatter plots. No JavaScript, works in any static viewer.
 
-**[player comparison →](https://htmlpreview.github.io/?https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_player_comparison.html)** — playoff scoring vs assists, labeled by player name.
-
-**[shot chart: Knicks vs Cavs →](https://htmlpreview.github.io/?https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_shot_chart.html)** — individual chart output.
+**[visualizations.qmd →](https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/nba_dbt/visualizations.qmd)** (`--output qmd`) — the Quarto source with one live ggsql cell per chart. SQL is visible via code-fold; render locally with `quarto render` using the ggsql kernel.
 
 ## related
 

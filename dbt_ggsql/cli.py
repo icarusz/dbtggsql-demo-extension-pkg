@@ -2,9 +2,9 @@
 cli.py — dbt-ggsql command-line interface.
 
 Usage:
-  dbt-ggsql build   [--profiles-dir DIR] [--project-dir DIR] [--skip-dbt]
+  dbt-ggsql build   [--profiles-dir DIR] [--project-dir DIR] [--output html|qmd|both]
   dbt-ggsql viz     [--project-dir DIR]
-  dbt-ggsql report  [--project-dir DIR]
+  dbt-ggsql report  [--project-dir DIR] [--output html|qmd|both]
 """
 
 from __future__ import annotations
@@ -19,6 +19,24 @@ from .runner import run_visualizations
 from .report import write_summary_html, write_qmd
 
 
+OUTPUT_HELP = (
+    "Output format for the report.  "
+    "'html' writes a self-contained visualizations.html with pre-rendered SVG charts.  "
+    "'qmd' writes a Quarto document with live ggsql cells and SQL visible via code-fold.  "
+    "'both' produces both."
+)
+
+
+def _emit_reports(results, viz_dir, project_root, output):
+    """Write the requested output format(s) and echo what was produced."""
+    if output in ("html", "both"):
+        html_path = write_summary_html(results, project_root)
+        click.echo(f"✓  html    → {html_path}")
+    if output in ("qmd", "both"):
+        qmd_path = write_qmd(viz_dir, project_root)
+        click.echo(f"✓  quarto  → {qmd_path}")
+
+
 @click.group()
 @click.version_option()
 def cli():
@@ -30,7 +48,10 @@ def cli():
 @click.option("--project-dir",  default=".", show_default=True, help="dbt project directory")
 @click.option("--skip-dbt",     is_flag=True, default=False,    help="skip dbt build, run visualizations only")
 @click.option("--viz-dir",      default="visualizations",        help="directory containing .ggsql files")
-def build(profiles_dir, project_dir, skip_dbt, viz_dir):
+@click.option("--output",       default="html", show_default=True,
+              type=click.Choice(["html", "qmd", "both"], case_sensitive=False),
+              help=OUTPUT_HELP)
+def build(profiles_dir, project_dir, skip_dbt, viz_dir, output):
     """Run dbt build, then render all .ggsql visualizations."""
     project_root = str(Path(project_dir).resolve())
 
@@ -59,11 +80,8 @@ def build(profiles_dir, project_dir, skip_dbt, viz_dir):
     click.echo(f"✓  {len(ok)} charts → output/charts/")
 
     if ok:
-        click.echo("▶  generating summary...")
-        html_path = write_summary_html(results, project_root)
-        qmd_path  = write_qmd(viz_dir, project_root)
-        click.echo(f"✓  summary   → {html_path}")
-        click.echo(f"✓  quarto    → {qmd_path}")
+        click.echo("▶  generating report...")
+        _emit_reports(results, viz_dir, project_root, output)
 
 
 @cli.command()
@@ -81,12 +99,15 @@ def viz(project_dir, viz_dir):
 @cli.command()
 @click.option("--project-dir", default=".", show_default=True)
 @click.option("--viz-dir",     default="visualizations")
-def report(project_dir, viz_dir):
-    """Generate visualizations.html summary and visualizations.qmd."""
+@click.option("--output",      default="html", show_default=True,
+              type=click.Choice(["html", "qmd", "both"], case_sensitive=False),
+              help=OUTPUT_HELP)
+def report(project_dir, viz_dir, output):
+    """Re-render visualizations and generate the requested output format."""
     project_root = str(Path(project_dir).resolve())
-    click.echo("▶  rendering for report...")
+    click.echo("▶  rendering visualizations...")
     results = run_visualizations(project_root, viz_dir=viz_dir)
-    html_path = write_summary_html(results, project_root)
-    qmd_path  = write_qmd(viz_dir, project_root)
-    click.echo(f"✓  summary → {html_path}")
-    click.echo(f"✓  quarto  → {qmd_path}")
+    ok = [r for r in results if r.success]
+    click.echo(f"✓  {len(ok)} charts rendered")
+    click.echo("▶  generating report...")
+    _emit_reports(results, viz_dir, project_root, output)
