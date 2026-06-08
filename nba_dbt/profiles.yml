@@ -1,0 +1,6 @@
+nba_finals:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: nba_finals.duckdb

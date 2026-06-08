@@ -1,0 +1,34 @@
+# generated output
+output/
+*.html
+
+# quarto
+_freeze/
+_site/
+/.quarto/
+*_files/
+
+# dbt
+nba_dbt/target/
+nba_dbt/logs/
+nba_dbt/dbt_packages/
+*.duckdb
+
+# parquet exports
+nba_dbt/exports/*.parquet
+
+# python
+__pycache__/
+*.pyc
+.venv/
+uv.lock
+*.egg-info/
+dist/
+build/
+
+# logs
+logs/
+
+# misc
+.DS_Store
+.claude/

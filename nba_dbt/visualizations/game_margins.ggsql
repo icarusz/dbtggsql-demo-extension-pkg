@@ -1,0 +1,12 @@
+SELECT playoff_game_num, margin, round, team
+FROM 'exports/mart_game_scores.parquet'
+WHERE COALESCE(NULLIF(getenv('NBA_TEAM'), ''), team) = team
+VISUALISE playoff_game_num AS x, margin AS y, round AS color
+DRAW bar
+  SETTING position => 'identity'
+PLACE rule
+  SETTING y => 0, color => '#334155', linewidth => 0.5
+FACET team
+LABEL title => 'Playoff Margin Game by Game',
+      x => 'Playoff Game #', y => 'Point Margin (+ = win)',
+      color => 'Round'

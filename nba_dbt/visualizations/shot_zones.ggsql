@@ -1,0 +1,9 @@
+SELECT shot_zone, fg_pct, pct_of_fga, team
+FROM 'exports/mart_shot_zones.parquet'
+WHERE stat_type = 'playoffs'
+ORDER BY zone_order
+VISUALISE shot_zone AS x, fg_pct AS y, team AS color
+DRAW bar
+  SETTING position => 'dodge'
+LABEL title => 'Playoff FG% by Shot Zone',
+      x => '', y => 'Field Goal %', color => 'Team'

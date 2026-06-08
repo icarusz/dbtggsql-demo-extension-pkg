@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+.reveal h1,
+.reveal h2 {
+  color: #005F73;
+  font-family: 'Nunito Sans', system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+.reveal p,
+.reveal li,
+.reveal .slide-content {
+  font-family: 'Nunito Sans', system-ui, sans-serif;
+  color: #001219;
+}
+
+.reveal strong { color: #005F73; }
+
+.reveal .footer {
+  color: #0A9396;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.7em;
+}
+
+.reveal pre code {
+  background: #DEF1EB;
+  color: #005F73;
+}
+
+.reveal code {
+  color: #005F73;
+}

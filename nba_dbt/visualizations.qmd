@@ -1,0 +1,197 @@
+---
+title: "2026 NBA Finals · visualizations"
+subtitle: "ggsql + dbt · posit hackathon 2026"
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc-title: "charts"
+    embed-resources: true
+    code-fold: true
+    code-summary: "show query"
+jupyter: ggsql
+---
+
+## efficiency comparison
+
+```{ggsql}
+SELECT team, side, period, value, category
+FROM 'exports/mart_efficiency_comparison.parquet'
+VISUALISE side AS x, value AS y, period AS color
+DRAW bar
+  SETTING position => 'dodge'
+FACET team BY category
+LABEL title => 'Offense & Defense — Regular Season vs Playoffs',
+      x => '', y => 'Value', color => ''
+```
+
+## game margins
+
+```{ggsql}
+SELECT playoff_game_num, margin, round, team
+FROM 'exports/mart_game_scores.parquet'
+WHERE COALESCE(NULLIF(getenv('NBA_TEAM'), ''), team) = team
+VISUALISE playoff_game_num AS x, margin AS y, round AS color
+DRAW bar
+  SETTING position => 'identity'
+PLACE rule
+  SETTING y => 0, color => '#334155', linewidth => 0.5
+FACET team
+LABEL title => 'Playoff Margin Game by Game',
+      x => 'Playoff Game #', y => 'Point Margin (+ = win)',
+      color => 'Round'
+```
+
+## head to head
+
+```{ggsql}
+SELECT context, 'New York Knicks'   AS team, knicks_score AS score
+FROM 'nba_dbt/seeds/raw_head_to_head.csv'
+UNION ALL
+SELECT context, 'San Antonio Spurs' AS team, spurs_score AS score
+FROM 'nba_dbt/seeds/raw_head_to_head.csv'
+VISUALISE context AS x, score AS y, team AS color
+DRAW bar
+  SETTING position => 'dodge'
+LABEL title => 'Regular Season Head-to-Head',
+      x => '', y => 'Points', color => 'Team'
+```
+
+## player comparison
+
+```{ggsql}
+SELECT player, team, playoff_ppg, playoff_apg, playoff_rpg
+FROM 'exports/mart_player_comparison.parquet'
+VISUALISE playoff_ppg AS x, playoff_apg AS y, team AS color
+DRAW point
+  SETTING size => 4, opacity => 0.85
+DRAW text
+  MAPPING player AS label
+  SETTING fontsize => 9
+LABEL title => 'Playoff Scoring vs Assists',
+      x => 'Points per Game', y => 'Assists per Game',
+      color => 'Team'
+```
+
+## shot chart knicks cavs
+
+```{ggsql}
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'New York Knicks'
+  AND opponent = 'Cleveland Cavaliers'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Knicks vs Cleveland — ECF Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''
+```
+
+## shot chart knicks hawks
+
+```{ggsql}
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'New York Knicks'
+  AND opponent = 'Atlanta Hawks'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Knicks vs Atlanta — R1 Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''
+```
+
+## shot chart knicks sixers
+
+```{ggsql}
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'New York Knicks'
+  AND opponent = 'Philadelphia 76ers'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Knicks vs Philadelphia — R2 Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''
+```
+
+## shot chart spurs blazers
+
+```{ggsql}
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'San Antonio Spurs'
+  AND opponent = 'Portland Trail Blazers'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Spurs vs Portland — R1 Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''
+```
+
+## shot chart spurs okc
+
+```{ggsql}
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'San Antonio Spurs'
+  AND opponent = 'Oklahoma City Thunder'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Spurs vs OKC — WCF Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''
+```
+
+## shot chart spurs wolves
+
+```{ggsql}
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'San Antonio Spurs'
+  AND opponent = 'Minnesota Timberwolves'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Spurs vs Minnesota — R2 Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''
+```
+
+## shot zones
+
+```{ggsql}
+SELECT shot_zone, fg_pct, pct_of_fga, team
+FROM 'exports/mart_shot_zones.parquet'
+WHERE stat_type = 'playoffs'
+ORDER BY zone_order
+VISUALISE shot_zone AS x, fg_pct AS y, team AS color
+DRAW bar
+  SETTING position => 'dodge'
+LABEL title => 'Playoff FG% by Shot Zone',
+      x => '', y => 'Field Goal %', color => 'Team'
+```
+

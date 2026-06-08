@@ -1,0 +1,10 @@
+SELECT context, 'New York Knicks'   AS team, knicks_score AS score
+FROM 'nba_dbt/seeds/raw_head_to_head.csv'
+UNION ALL
+SELECT context, 'San Antonio Spurs' AS team, spurs_score AS score
+FROM 'nba_dbt/seeds/raw_head_to_head.csv'
+VISUALISE context AS x, score AS y, team AS color
+DRAW bar
+  SETTING position => 'dodge'
+LABEL title => 'Regular Season Head-to-Head',
+      x => '', y => 'Points', color => 'Team'

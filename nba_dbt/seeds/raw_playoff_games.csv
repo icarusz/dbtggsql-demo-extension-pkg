@@ -1,0 +1,33 @@
+team,conference,round,round_num,opponent,game_num,team_score,opp_score,result,location
+New York Knicks,East,First Round,1,Atlanta Hawks,1,113,102,W,New York
+New York Knicks,East,First Round,1,Atlanta Hawks,2,106,107,L,New York
+New York Knicks,East,First Round,1,Atlanta Hawks,3,108,109,L,Atlanta
+New York Knicks,East,First Round,1,Atlanta Hawks,4,114,98,W,Atlanta
+New York Knicks,East,First Round,1,Atlanta Hawks,5,126,97,W,New York
+New York Knicks,East,First Round,1,Atlanta Hawks,6,140,89,W,Atlanta
+New York Knicks,East,Second Round,2,Philadelphia 76ers,1,118,98,W,New York
+New York Knicks,East,Second Round,2,Philadelphia 76ers,2,124,103,W,New York
+New York Knicks,East,Second Round,2,Philadelphia 76ers,3,119,97,W,Philadelphia
+New York Knicks,East,Second Round,2,Philadelphia 76ers,4,128,101,W,Philadelphia
+New York Knicks,East,Conf Finals,3,Cleveland Cavaliers,1,115,104,W,Cleveland
+New York Knicks,East,Conf Finals,3,Cleveland Cavaliers,2,109,93,W,Cleveland
+New York Knicks,East,Conf Finals,3,Cleveland Cavaliers,3,121,108,W,New York
+New York Knicks,East,Conf Finals,3,Cleveland Cavaliers,4,130,93,W,New York
+San Antonio Spurs,West,First Round,1,Portland Trail Blazers,1,111,98,W,San Antonio
+San Antonio Spurs,West,First Round,1,Portland Trail Blazers,2,103,106,L,San Antonio
+San Antonio Spurs,West,First Round,1,Portland Trail Blazers,3,120,108,W,Portland
+San Antonio Spurs,West,First Round,1,Portland Trail Blazers,4,114,93,W,Portland
+San Antonio Spurs,West,First Round,1,Portland Trail Blazers,5,114,95,W,San Antonio
+San Antonio Spurs,West,Second Round,2,Minnesota Timberwolves,1,104,106,L,San Antonio
+San Antonio Spurs,West,Second Round,2,Minnesota Timberwolves,2,133,95,W,San Antonio
+San Antonio Spurs,West,Second Round,2,Minnesota Timberwolves,3,115,108,W,Minnesota
+San Antonio Spurs,West,Second Round,2,Minnesota Timberwolves,4,109,114,L,Minnesota
+San Antonio Spurs,West,Second Round,2,Minnesota Timberwolves,5,126,97,W,San Antonio
+San Antonio Spurs,West,Second Round,2,Minnesota Timberwolves,6,139,109,W,Minnesota
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,1,118,110,W,Oklahoma City
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,2,105,119,L,Oklahoma City
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,3,108,101,W,San Antonio
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,4,107,113,L,San Antonio
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,5,122,109,W,Oklahoma City
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,6,103,108,L,Oklahoma City
+San Antonio Spurs,West,Conf Finals,3,Oklahoma City Thunder,7,111,103,W,Oklahoma City

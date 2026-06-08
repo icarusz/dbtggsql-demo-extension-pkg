@@ -1,0 +1,11 @@
+SELECT player, team, playoff_ppg, playoff_apg, playoff_rpg
+FROM 'exports/mart_player_comparison.parquet'
+VISUALISE playoff_ppg AS x, playoff_apg AS y, team AS color
+DRAW point
+  SETTING size => 4, opacity => 0.85
+DRAW text
+  MAPPING player AS label
+  SETTING fontsize => 9
+LABEL title => 'Playoff Scoring vs Assists',
+      x => 'Points per Game', y => 'Assists per Game',
+      color => 'Team'

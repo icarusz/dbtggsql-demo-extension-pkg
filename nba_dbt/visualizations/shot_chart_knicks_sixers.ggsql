@@ -1,0 +1,13 @@
+SELECT loc_x, loc_y, made_label, category
+FROM 'exports/mart_shot_chart.parquet'
+WHERE team    = 'New York Knicks'
+  AND opponent = 'Philadelphia 76ers'
+VISUALISE loc_x AS x, loc_y AS y, made_label AS color
+DRAW point
+  SETTING opacity => 0.65, size => 3
+SCALE color
+  FROM ['Made', 'Missed']
+  TO   ['#22c55e', '#ef4444']
+LABEL title => 'Knicks vs Philadelphia — R2 Shot Chart',
+      x => 'Court Width', y => 'Distance from Basket',
+      color => ''

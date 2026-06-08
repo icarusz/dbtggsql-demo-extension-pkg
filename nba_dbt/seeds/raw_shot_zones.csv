@@ -1,0 +1,25 @@
+team,stat_type,shot_zone,fga,fgm,fg_pct,pct_of_fga
+New York Knicks,playoffs,Restricted Area,414,282,68.1,27.9
+New York Knicks,playoffs,In The Paint (Non-RA),224,118,52.7,15.1
+New York Knicks,playoffs,Mid-Range,142,61,43.0,9.6
+New York Knicks,playoffs,Left Corner 3,88,37,42.0,5.9
+New York Knicks,playoffs,Right Corner 3,94,40,42.6,6.3
+New York Knicks,playoffs,Above the Break 3,522,208,39.8,35.2
+San Antonio Spurs,playoffs,Restricted Area,371,231,62.3,24.3
+San Antonio Spurs,playoffs,In The Paint (Non-RA),198,101,51.0,13.0
+San Antonio Spurs,playoffs,Mid-Range,201,96,47.8,13.2
+San Antonio Spurs,playoffs,Left Corner 3,102,41,40.2,6.7
+San Antonio Spurs,playoffs,Right Corner 3,98,39,39.8,6.4
+San Antonio Spurs,playoffs,Above the Break 3,556,208,37.4,36.4
+New York Knicks,playoffs_allowed,Restricted Area,308,172,55.8,21.4
+New York Knicks,playoffs_allowed,In The Paint (Non-RA),196,98,50.0,13.6
+New York Knicks,playoffs_allowed,Mid-Range,188,82,43.6,13.1
+New York Knicks,playoffs_allowed,Left Corner 3,118,33,28.0,8.2
+New York Knicks,playoffs_allowed,Right Corner 3,122,34,27.9,8.5
+New York Knicks,playoffs_allowed,Above the Break 3,507,157,31.0,35.2
+San Antonio Spurs,playoffs_allowed,Restricted Area,342,182,53.2,22.8
+San Antonio Spurs,playoffs_allowed,In The Paint (Non-RA),214,106,49.5,14.3
+San Antonio Spurs,playoffs_allowed,Mid-Range,228,101,44.3,15.2
+San Antonio Spurs,playoffs_allowed,Left Corner 3,104,38,36.5,6.9
+San Antonio Spurs,playoffs_allowed,Right Corner 3,108,40,37.0,7.2
+San Antonio Spurs,playoffs_allowed,Above the Break 3,504,181,35.9,33.6
