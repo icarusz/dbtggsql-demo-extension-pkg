@@ -1,8 +1,0 @@
-SELECT team, side, period, value, category
-FROM 'exports/mart_efficiency_comparison.parquet'
-VISUALISE side AS x, value AS y, period AS color
-DRAW bar
-  SETTING position => 'dodge'
-FACET team BY category
-LABEL title => 'Offense & Defense — Regular Season vs Playoffs',
-      x => '', y => 'Value', color => ''

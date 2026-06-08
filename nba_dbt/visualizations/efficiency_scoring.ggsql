@@ -1,0 +1,9 @@
+SELECT team, side, period, value
+FROM 'exports/mart_efficiency_comparison.parquet'
+WHERE category = 'Scoring'
+VISUALISE side AS x, value AS y, period AS color
+DRAW bar
+  SETTING position => 'dodge'
+FACET team
+LABEL title => 'Scoring — Regular Season vs Playoffs',
+      x => '', y => 'Points per Game', color => ''

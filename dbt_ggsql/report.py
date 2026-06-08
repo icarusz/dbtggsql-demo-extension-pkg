@@ -56,6 +56,13 @@ _SUMMARY_HEAD = """\
       max-width: 1400px;
       margin: 0 auto;
     }
+    /* paired cards share a row and split the width 50/50 */
+    .pair-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
     .card {
       background: white;
       border-radius: 10px;
@@ -98,6 +105,9 @@ _SUMMARY_CARD = """\
 </div>
 """
 
+_SUMMARY_PAIR_OPEN = '<div class="pair-row">\n'
+_SUMMARY_PAIR_CLOSE = '</div>\n'
+
 _SUMMARY_SCRIPT_OPEN = """\
 </div>
 <footer>built by dbt-ggsql · charts rendered with vega-lite</footer>
@@ -120,6 +130,37 @@ _SUMMARY_TAIL = """\
 """
 
 
+def _chart_prefix(name: str) -> str:
+    """Return the shared prefix for pairing — everything before the last '_'."""
+    parts = name.rsplit("_", 1)
+    return parts[0] if len(parts) == 2 else name
+
+
+def _group_charts(results: list[ChartResult]) -> list[list[ChartResult]]:
+    """
+    Group consecutive charts that share a prefix into pairs.
+    A group of exactly 2 with the same prefix renders as a side-by-side pair.
+    Everything else renders as single cards.
+    """
+    groups: list[list[ChartResult]] = []
+    i = 0
+    while i < len(results):
+        r = results[i]
+        prefix = _chart_prefix(r.name)
+        # look ahead: does the next chart share this prefix?
+        if (
+            i + 1 < len(results)
+            and _chart_prefix(results[i + 1].name) == prefix
+            and prefix != r.name          # guard: only pair if name actually has a suffix
+        ):
+            groups.append([r, results[i + 1]])
+            i += 2
+        else:
+            groups.append([r])
+            i += 1
+    return groups
+
+
 def write_summary_html(
     results: list[ChartResult],
     project_root: str,
@@ -130,13 +171,24 @@ def write_summary_html(
     out_file = Path(project_root) / output_path
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
+    # assign a stable index to each chart for JS embed targets
+    idx_map = {r.name: i for i, r in enumerate(successful)}
+    groups = _group_charts(successful)
+
     parts = [_SUMMARY_HEAD]
-    for idx, r in enumerate(successful):
-        parts.append(_SUMMARY_CARD.format(name=r.name, idx=idx))
+    for group in groups:
+        if len(group) == 2:
+            parts.append(_SUMMARY_PAIR_OPEN)
+            for r in group:
+                parts.append(_SUMMARY_CARD.format(name=r.name, idx=idx_map[r.name]))
+            parts.append(_SUMMARY_PAIR_CLOSE)
+        else:
+            r = group[0]
+            parts.append(_SUMMARY_CARD.format(name=r.name, idx=idx_map[r.name]))
 
     parts.append(_SUMMARY_SCRIPT_OPEN)
-    for idx, r in enumerate(successful):
-        parts.append(_SUMMARY_SCRIPT_ENTRY.format(spec=r.vega_spec, idx=idx))
+    for r in successful:
+        parts.append(_SUMMARY_SCRIPT_ENTRY.format(spec=r.vega_spec, idx=idx_map[r.name]))
 
     parts.append(_SUMMARY_TAIL)
     out_file.write_text("".join(parts), encoding="utf-8")
