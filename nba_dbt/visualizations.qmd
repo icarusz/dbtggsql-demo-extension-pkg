@@ -12,17 +12,32 @@ format:
 jupyter: ggsql
 ---
 
-## efficiency comparison
+## efficiency 3pt
 
 ```{ggsql}
-SELECT team, side, period, value, category
+SELECT team, side, period, value
 FROM 'exports/mart_efficiency_comparison.parquet'
+WHERE category = '3PT Shooting'
 VISUALISE side AS x, value AS y, period AS color
 DRAW bar
   SETTING position => 'dodge'
-FACET team BY category
-LABEL title => 'Offense & Defense — Regular Season vs Playoffs',
-      x => '', y => 'Value', color => ''
+FACET team
+LABEL title => '3-Point Shooting — Regular Season vs Playoffs',
+      x => '', y => '3PT% (defense = opponent %)', color => ''
+```
+
+## efficiency scoring
+
+```{ggsql}
+SELECT team, side, period, value
+FROM 'exports/mart_efficiency_comparison.parquet'
+WHERE category = 'Scoring'
+VISUALISE side AS x, value AS y, period AS color
+DRAW bar
+  SETTING position => 'dodge'
+FACET team
+LABEL title => 'Scoring — Regular Season vs Playoffs',
+      x => '', y => 'Points per Game', color => ''
 ```
 
 ## game margins
@@ -64,10 +79,10 @@ SELECT player, team, playoff_ppg, playoff_apg, playoff_rpg
 FROM 'exports/mart_player_comparison.parquet'
 VISUALISE playoff_ppg AS x, playoff_apg AS y, team AS color
 DRAW point
-  SETTING size => 4, opacity => 0.85
+  SETTING size => 5, opacity => 0.9
 DRAW text
   MAPPING player AS label
-  SETTING fontsize => 9
+  SETTING fontsize => 9, vjust => 0, offset => 8, color => '#374151'
 LABEL title => 'Playoff Scoring vs Assists',
       x => 'Points per Game', y => 'Assists per Game',
       color => 'Team'

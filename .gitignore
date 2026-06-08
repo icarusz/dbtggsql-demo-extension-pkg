@@ -1,6 +1,7 @@
 # generated output
 output/
 *.html
+!docs/*.html
 
 # quarto
 _freeze/

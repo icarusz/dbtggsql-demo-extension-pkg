@@ -1,0 +1,3002 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>shot_chart_knicks_cavs</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+    }
+    #vis {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px #0000001a;
+      padding: 24px;
+      width: 860px;
+      height: 620px;
+    }
+  </style>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "config": {
+    "axis": {
+      "domain": false,
+      "grid": true,
+      "gridColor": "#FFFFFF",
+      "gridWidth": 1,
+      "labelColor": "#4D4D4D",
+      "labelFontSize": 12,
+      "tickColor": "#333333",
+      "tickSize": 4,
+      "titleColor": "#000000",
+      "titleFontSize": 15,
+      "titleFontWeight": "normal",
+      "titlePadding": 10
+    },
+    "header": {
+      "labelColor": "#000000",
+      "labelFontSize": 15,
+      "labelFontWeight": "normal",
+      "labelPadding": 5,
+      "title": null
+    },
+    "legend": {
+      "labelColor": "#4D4D4D",
+      "labelFontSize": 12,
+      "rowPadding": 6,
+      "titleColor": "#000000",
+      "titleFontSize": 15,
+      "titleFontWeight": "normal",
+      "titlePadding": 8
+    },
+    "title": {
+      "anchor": "start",
+      "color": "#000000",
+      "fontSize": 18,
+      "fontWeight": "normal",
+      "frame": "group",
+      "offset": 10,
+      "subtitleColor": "#4D4D4D",
+      "subtitleFontSize": 15,
+      "subtitleFontWeight": "normal"
+    },
+    "view": {
+      "fill": "#EBEBEB",
+      "stroke": null
+    }
+  },
+  "data": {
+    "values": [
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 59,
+        "__ggsql_aes_pos2__": 243,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 0,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -224,
+        "__ggsql_aes_pos2__": 124,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 1,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -100,
+        "__ggsql_aes_pos2__": 230,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 2,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -67,
+        "__ggsql_aes_pos2__": 24,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 3,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -17,
+        "__ggsql_aes_pos2__": 20,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 4,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 89,
+        "__ggsql_aes_pos2__": 141,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 5,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 31,
+        "__ggsql_aes_pos2__": 89,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 6,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 119,
+        "__ggsql_aes_pos2__": 224,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 7,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 235,
+        "__ggsql_aes_pos2__": -6,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 8,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 9,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 20,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 10,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 91,
+        "__ggsql_aes_pos2__": 135,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 11,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 4,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 12,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 18,
+        "__ggsql_aes_pos2__": 11,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 13,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -7,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 14,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 1,
+        "__ggsql_aes_pos2__": -6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 15,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 22,
+        "__ggsql_aes_pos2__": 143,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 16,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 6,
+        "__ggsql_aes_pos2__": -1,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 17,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -229,
+        "__ggsql_aes_pos2__": 20,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 18,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 161,
+        "__ggsql_aes_pos2__": 103,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 19,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 141,
+        "__ggsql_aes_pos2__": 221,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 20,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 94,
+        "__ggsql_aes_pos2__": 243,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 21,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -107,
+        "__ggsql_aes_pos2__": 224,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 22,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -89,
+        "__ggsql_aes_pos2__": 263,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 23,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -110,
+        "__ggsql_aes_pos2__": 229,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 24,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -135,
+        "__ggsql_aes_pos2__": 209,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 25,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -15,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 26,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 6,
+        "__ggsql_aes_pos2__": 9,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 27,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 4,
+        "__ggsql_aes_pos2__": 19,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 28,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": 29,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 29,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -12,
+        "__ggsql_aes_pos2__": 263,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 30,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 61,
+        "__ggsql_aes_pos2__": 51,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 31,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 217,
+        "__ggsql_aes_pos2__": 137,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 32,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": 14,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 33,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -22,
+        "__ggsql_aes_pos2__": 36,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 34,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 230,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 35,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 65,
+        "__ggsql_aes_pos2__": 250,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 36,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -12,
+        "__ggsql_aes_pos2__": 14,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 37,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -40,
+        "__ggsql_aes_pos2__": 250,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 38,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -76,
+        "__ggsql_aes_pos2__": 57,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 39,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -232,
+        "__ggsql_aes_pos2__": -11,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 40,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 105,
+        "__ggsql_aes_pos2__": 246,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 41,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -38,
+        "__ggsql_aes_pos2__": 47,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 42,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -83,
+        "__ggsql_aes_pos2__": 259,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 43,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 123,
+        "__ggsql_aes_pos2__": 227,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 44,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 78,
+        "__ggsql_aes_pos2__": 248,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 45,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -2,
+        "__ggsql_aes_pos2__": 17,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 46,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -85,
+        "__ggsql_aes_pos2__": 122,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 47,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 228,
+        "__ggsql_aes_pos2__": 34,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 48,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 2,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 49,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 32,
+        "__ggsql_aes_pos2__": 84,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 50,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -83,
+        "__ggsql_aes_pos2__": 29,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 51,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 10,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 52,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": 10,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 53,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 94,
+        "__ggsql_aes_pos2__": 133,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 54,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -5,
+        "__ggsql_aes_pos2__": 120,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 55,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 56,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 16,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 57,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 28,
+        "__ggsql_aes_pos2__": 20,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 58,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 59,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 15,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 60,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -16,
+        "__ggsql_aes_pos2__": 23,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 61,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 60,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 62,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -34,
+        "__ggsql_aes_pos2__": 12,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 63,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 64,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -23,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 65,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 11,
+        "__ggsql_aes_pos2__": 21,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 66,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -154,
+        "__ggsql_aes_pos2__": 212,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 67,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 15,
+        "__ggsql_aes_pos2__": 54,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 68,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -88,
+        "__ggsql_aes_pos2__": 92,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 69,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -189,
+        "__ggsql_aes_pos2__": 175,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 70,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 18,
+        "__ggsql_aes_pos2__": 12,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 71,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -38,
+        "__ggsql_aes_pos2__": 22,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 72,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 20,
+        "__ggsql_aes_pos2__": 29,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 73,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -34,
+        "__ggsql_aes_pos2__": 120,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 74,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 4,
+        "__ggsql_aes_pos2__": 71,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 75,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 99,
+        "__ggsql_aes_pos2__": 244,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 76,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 86,
+        "__ggsql_aes_pos2__": 239,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 77,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 40,
+        "__ggsql_aes_pos2__": 263,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 78,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 242,
+        "__ggsql_aes_pos2__": -2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 79,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 222,
+        "__ggsql_aes_pos2__": 37,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 80,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 21,
+        "__ggsql_aes_pos2__": 21,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 81,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -7,
+        "__ggsql_aes_pos2__": 81,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 82,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -18,
+        "__ggsql_aes_pos2__": 7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 83,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -33,
+        "__ggsql_aes_pos2__": 41,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 84,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 159,
+        "__ggsql_aes_pos2__": 197,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 85,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -83,
+        "__ggsql_aes_pos2__": 84,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 86,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -50,
+        "__ggsql_aes_pos2__": 254,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 87,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": 27,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 88,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -87,
+        "__ggsql_aes_pos2__": 255,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 89,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -228,
+        "__ggsql_aes_pos2__": -2,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 90,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 233,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 91,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 11,
+        "__ggsql_aes_pos2__": -1,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 92,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -119,
+        "__ggsql_aes_pos2__": 221,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 93,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 229,
+        "__ggsql_aes_pos2__": 11,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 94,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 67,
+        "__ggsql_aes_pos2__": 105,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 95,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -2,
+        "__ggsql_aes_pos2__": -6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 96,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -27,
+        "__ggsql_aes_pos2__": 31,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 97,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -109,
+        "__ggsql_aes_pos2__": 222,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 98,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 10,
+        "__ggsql_aes_pos2__": 88,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 99,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -7,
+        "__ggsql_aes_pos2__": 21,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 100,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -5,
+        "__ggsql_aes_pos2__": 24,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 101,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -5,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 102,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 15,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 103,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -13,
+        "__ggsql_aes_pos2__": 16,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 104,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 233,
+        "__ggsql_aes_pos2__": 71,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 105,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 115,
+        "__ggsql_aes_pos2__": 229,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 106,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 58,
+        "__ggsql_aes_pos2__": 21,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 107,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 104,
+        "__ggsql_aes_pos2__": 29,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 108,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -32,
+        "__ggsql_aes_pos2__": 253,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 109,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 19,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 110,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -229,
+        "__ggsql_aes_pos2__": 16,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 111,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 183,
+        "__ggsql_aes_pos2__": 189,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 112,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 50,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 113,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -138,
+        "__ggsql_aes_pos2__": 208,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 114,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 14,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 115,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 32,
+        "__ggsql_aes_pos2__": 61,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 116,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 129,
+        "__ggsql_aes_pos2__": 159,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 117,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 118,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -13,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 119,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -60,
+        "__ggsql_aes_pos2__": 153,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 120,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 235,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 121,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -81,
+        "__ggsql_aes_pos2__": 250,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 122,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 232,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 123,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 9,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 124,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 27,
+        "__ggsql_aes_pos2__": 252,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 125,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -25,
+        "__ggsql_aes_pos2__": 53,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 126,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -65,
+        "__ggsql_aes_pos2__": 241,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 127,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 110,
+        "__ggsql_aes_pos2__": 235,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 128,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 239,
+        "__ggsql_aes_pos2__": -15,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 129,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": -3,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 130,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -230,
+        "__ggsql_aes_pos2__": 110,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 131,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 51,
+        "__ggsql_aes_pos2__": 273,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 132,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 133,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 49,
+        "__ggsql_aes_pos2__": 277,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 134,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -12,
+        "__ggsql_aes_pos2__": 99,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 135,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -6,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 136,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -116,
+        "__ggsql_aes_pos2__": 16,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 137,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 15,
+        "__ggsql_aes_pos2__": 17,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 138,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 124,
+        "__ggsql_aes_pos2__": 223,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 139,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 100,
+        "__ggsql_aes_pos2__": 257,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 140,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 21,
+        "__ggsql_aes_pos2__": 259,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 141,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -27,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 142,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -131,
+        "__ggsql_aes_pos2__": 227,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 143,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -233,
+        "__ggsql_aes_pos2__": 28,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 144,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -17,
+        "__ggsql_aes_pos2__": 27,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 145,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -6,
+        "__ggsql_aes_pos2__": 270,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 146,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -2,
+        "__ggsql_aes_pos2__": 23,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 147,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 18,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 148,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -234,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 149,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -6,
+        "__ggsql_aes_pos2__": 2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 150,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -13,
+        "__ggsql_aes_pos2__": 11,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 151,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 107,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 152,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -12,
+        "__ggsql_aes_pos2__": 21,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 153,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 218,
+        "__ggsql_aes_pos2__": 121,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 154,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -213,
+        "__ggsql_aes_pos2__": 162,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 155,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 197,
+        "__ggsql_aes_pos2__": 147,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 156,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -2,
+        "__ggsql_aes_pos2__": 10,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 157,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -34,
+        "__ggsql_aes_pos2__": 33,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 158,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 269,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 159,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -152,
+        "__ggsql_aes_pos2__": 210,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 160,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 48,
+        "__ggsql_aes_pos2__": 101,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 161,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -13,
+        "__ggsql_aes_pos2__": 75,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 162,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -11,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 163,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -230,
+        "__ggsql_aes_pos2__": 12,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 164,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -87,
+        "__ggsql_aes_pos2__": 112,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 165,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -27,
+        "__ggsql_aes_pos2__": 91,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 166,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 58,
+        "__ggsql_aes_pos2__": 115,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 167,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 4,
+        "__ggsql_aes_pos2__": 2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 168,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -54,
+        "__ggsql_aes_pos2__": 137,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 169,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 11,
+        "__ggsql_aes_pos2__": 110,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 170,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -15,
+        "__ggsql_aes_pos2__": 62,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 171,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 269,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 172,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -10,
+        "__ggsql_aes_pos2__": 255,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 173,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 1,
+        "__ggsql_aes_pos2__": 26,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 174,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -34,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 175,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 2,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 176,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -230,
+        "__ggsql_aes_pos2__": 103,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 177,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 183,
+        "__ggsql_aes_pos2__": 230,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 178,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -80,
+        "__ggsql_aes_pos2__": 142,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 179,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 152,
+        "__ggsql_aes_pos2__": 119,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 180,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -127,
+        "__ggsql_aes_pos2__": 14,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 181,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -246,
+        "__ggsql_aes_pos2__": 82,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 182,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -98,
+        "__ggsql_aes_pos2__": 43,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 183,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 2,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 184,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 227,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 185,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -248,
+        "__ggsql_aes_pos2__": -4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 186,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 9,
+        "__ggsql_aes_pos2__": 262,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 187,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 118,
+        "__ggsql_aes_pos2__": 231,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 188,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -88,
+        "__ggsql_aes_pos2__": -6,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 189,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 36,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 190,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -12,
+        "__ggsql_aes_pos2__": 14,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 191,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -92,
+        "__ggsql_aes_pos2__": 241,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 192,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": -2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 193,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 6,
+        "__ggsql_aes_pos2__": -7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 194,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 121,
+        "__ggsql_aes_pos2__": 71,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 195,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -16,
+        "__ggsql_aes_pos2__": 251,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 196,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -70,
+        "__ggsql_aes_pos2__": 88,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 197,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -82,
+        "__ggsql_aes_pos2__": 34,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 198,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 233,
+        "__ggsql_aes_pos2__": 152,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 199,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -50,
+        "__ggsql_aes_pos2__": 37,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 200,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 78,
+        "__ggsql_aes_pos2__": 50,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 201,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 200,
+        "__ggsql_aes_pos2__": 176,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 202,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -2,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 203,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 143,
+        "__ggsql_aes_pos2__": 218,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 204,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 4,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 205,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -4,
+        "__ggsql_aes_pos2__": 64,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 206,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -71,
+        "__ggsql_aes_pos2__": 22,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 207,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -110,
+        "__ggsql_aes_pos2__": 48,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 208,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -60,
+        "__ggsql_aes_pos2__": 61,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 209,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -225,
+        "__ggsql_aes_pos2__": 149,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 210,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 124,
+        "__ggsql_aes_pos2__": 65,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 211,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -176,
+        "__ggsql_aes_pos2__": 227,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 212,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 11,
+        "__ggsql_aes_pos2__": 18,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 213,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 104,
+        "__ggsql_aes_pos2__": 47,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 214,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 203,
+        "__ggsql_aes_pos2__": 174,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 215,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 6,
+        "__ggsql_aes_pos2__": 7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 216,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 18,
+        "__ggsql_aes_pos2__": -3,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 217,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -40,
+        "__ggsql_aes_pos2__": 39,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 218,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 219,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 220,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 2,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 221,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -184,
+        "__ggsql_aes_pos2__": 256,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 222,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 6,
+        "__ggsql_aes_pos2__": 7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 223,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -76,
+        "__ggsql_aes_pos2__": 39,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 224,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 135,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 225,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 114,
+        "__ggsql_aes_pos2__": 113,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 226,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -70,
+        "__ggsql_aes_pos2__": 162,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 227,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -225,
+        "__ggsql_aes_pos2__": 63,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 228,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 125,
+        "__ggsql_aes_pos2__": 10,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 229,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 230,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 211,
+        "__ggsql_aes_pos2__": 163,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 231,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -243,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 232,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 2,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 233,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -123,
+        "__ggsql_aes_pos2__": 231,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 234,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 230,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 235,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 72,
+        "__ggsql_aes_pos2__": 134,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 236,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -205,
+        "__ggsql_aes_pos2__": 168,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 237,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -185,
+        "__ggsql_aes_pos2__": 231,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 238,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 221,
+        "__ggsql_aes_pos2__": 123,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 239,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -110,
+        "__ggsql_aes_pos2__": 55,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 240,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 227,
+        "__ggsql_aes_pos2__": 125,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 241,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 237,
+        "__ggsql_aes_pos2__": -10,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 242,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 104,
+        "__ggsql_aes_pos2__": 99,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 243,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 11,
+        "__ggsql_aes_pos2__": 17,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 244,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 15,
+        "__ggsql_aes_pos2__": 18,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 245,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 6,
+        "__ggsql_aes_pos2__": 113,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 246,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 16,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 247,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -54,
+        "__ggsql_aes_pos2__": 86,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 248,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -207,
+        "__ggsql_aes_pos2__": 246,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 249,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -18,
+        "__ggsql_aes_pos2__": 73,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 250,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 70,
+        "__ggsql_aes_pos2__": 95,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 251,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -229,
+        "__ggsql_aes_pos2__": 47,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 252,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -229,
+        "__ggsql_aes_pos2__": 100,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 253,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -12,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 254,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -10,
+        "__ggsql_aes_pos2__": -1,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 255,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -104,
+        "__ggsql_aes_pos2__": 226,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 256,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 107,
+        "__ggsql_aes_pos2__": 237,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 257,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -99,
+        "__ggsql_aes_pos2__": 235,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 258,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -89,
+        "__ggsql_aes_pos2__": 235,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 259,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -225,
+        "__ggsql_aes_pos2__": -7,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 260,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -23,
+        "__ggsql_aes_pos2__": 11,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 261,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -5,
+        "__ggsql_aes_pos2__": 11,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 262,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 12,
+        "__ggsql_aes_pos2__": 6,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 263,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -201,
+        "__ggsql_aes_pos2__": 151,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 264,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 1,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 265,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 266,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -11,
+        "__ggsql_aes_pos2__": -2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 267,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -227,
+        "__ggsql_aes_pos2__": -8,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 268,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -229,
+        "__ggsql_aes_pos2__": 27,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 269,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 3,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 270,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -234,
+        "__ggsql_aes_pos2__": -7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 271,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 170,
+        "__ggsql_aes_pos2__": 220,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 272,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -127,
+        "__ggsql_aes_pos2__": -7,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 273,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 274,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -71,
+        "__ggsql_aes_pos2__": 24,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 275,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 276,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 16,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 277,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 229,
+        "__ggsql_aes_pos2__": 29,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 278,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 181,
+        "__ggsql_aes_pos2__": 199,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 279,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -227,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 280,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 233,
+        "__ggsql_aes_pos2__": 22,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 281,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -7,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 282,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -137,
+        "__ggsql_aes_pos2__": 213,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 283,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 284,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -2,
+        "__ggsql_aes_pos2__": 16,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 285,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 2,
+        "__ggsql_aes_pos2__": 274,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 286,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 45,
+        "__ggsql_aes_pos2__": 163,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 287,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -82,
+        "__ggsql_aes_pos2__": 237,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 288,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 230,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 289,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -235,
+        "__ggsql_aes_pos2__": -7,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 290,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 56,
+        "__ggsql_aes_pos2__": 113,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 291,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 72,
+        "__ggsql_aes_pos2__": 252,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 292,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 18,
+        "__ggsql_aes_pos2__": 94,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 293,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -230,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 294,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 156,
+        "__ggsql_aes_pos2__": 14,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 295,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 45,
+        "__ggsql_aes_pos2__": 26,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 296,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 82,
+        "__ggsql_aes_pos2__": 174,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 297,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -38,
+        "__ggsql_aes_pos2__": 1,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 298,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 235,
+        "__ggsql_aes_pos2__": 81,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 299,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -49,
+        "__ggsql_aes_pos2__": 83,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 300,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": 2,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 301,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 302,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 53,
+        "__ggsql_aes_pos2__": 73,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 303,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 42,
+        "__ggsql_aes_pos2__": 17,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 304,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -154,
+        "__ggsql_aes_pos2__": 285,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 305,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 235,
+        "__ggsql_aes_pos2__": 13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 306,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -1,
+        "__ggsql_aes_pos2__": 5,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 307,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -4,
+        "__ggsql_aes_pos2__": 4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 308,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -1,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 309,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 211,
+        "__ggsql_aes_pos2__": 137,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 310,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 311,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -225,
+        "__ggsql_aes_pos2__": 136,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 312,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 235,
+        "__ggsql_aes_pos2__": 2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 313,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 16,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 314,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 80,
+        "__ggsql_aes_pos2__": 104,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 315,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -237,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 316,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 317,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -223,
+        "__ggsql_aes_pos2__": 133,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 318,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 59,
+        "__ggsql_aes_pos2__": 128,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 319,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -124,
+        "__ggsql_aes_pos2__": 8,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 320,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 81,
+        "__ggsql_aes_pos2__": -16,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 321,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 322,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 203,
+        "__ggsql_aes_pos2__": 149,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 323,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 5,
+        "__ggsql_aes_pos2__": 11,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 324,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -245,
+        "__ggsql_aes_pos2__": 7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 325,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 7,
+        "__ggsql_aes_pos2__": -4,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 326,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 228,
+        "__ggsql_aes_pos2__": 116,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 327,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 21,
+        "__ggsql_aes_pos2__": 7,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 328,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -129,
+        "__ggsql_aes_pos2__": -13,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 329,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 12,
+        "__ggsql_aes_pos2__": -1,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 330,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -94,
+        "__ggsql_aes_pos2__": 102,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 331,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 0,
+        "__ggsql_aes_pos2__": 0,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 332,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -9,
+        "__ggsql_aes_pos2__": 91,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 333,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -158,
+        "__ggsql_aes_pos2__": 207,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 334,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -25,
+        "__ggsql_aes_pos2__": 59,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 335,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -210,
+        "__ggsql_aes_pos2__": 191,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 336,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -202,
+        "__ggsql_aes_pos2__": 109,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 337,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 212,
+        "__ggsql_aes_pos2__": 138,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 338,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 234,
+        "__ggsql_aes_pos2__": 15,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 339,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -201,
+        "__ggsql_aes_pos2__": 183,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 340,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -17,
+        "__ggsql_aes_pos2__": 279,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 341,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 172,
+        "__ggsql_aes_pos2__": 191,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 342,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 217,
+        "__ggsql_aes_pos2__": 137,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 343,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": 9,
+        "__ggsql_aes_pos2__": 2,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 344,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": 191,
+        "__ggsql_aes_pos2__": 176,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 345,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Missed",
+        "__ggsql_aes_pos1__": -65,
+        "__ggsql_aes_pos2__": 83,
+        "__ggsql_aes_stroke__": "Missed",
+        "__ggsql_row_index__": 346,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      },
+      {
+        "__ggsql_aes_fill__": "Made",
+        "__ggsql_aes_pos1__": -108,
+        "__ggsql_aes_pos2__": 105,
+        "__ggsql_aes_stroke__": "Made",
+        "__ggsql_row_index__": 347,
+        "__ggsql_source__": "__ggsql_layer_0__"
+      }
+    ]
+  },
+  "height": "container",
+  "layer": [
+    {
+      "encoding": {
+        "detail": [
+          {
+            "field": "__ggsql_aes_fill__",
+            "type": "nominal"
+          },
+          {
+            "field": "__ggsql_aes_stroke__",
+            "type": "nominal"
+          }
+        ],
+        "fill": {
+          "field": "__ggsql_aes_fill__",
+          "legend": {
+            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
+          },
+          "scale": {
+            "domain": [
+              "Made",
+              "Missed"
+            ],
+            "range": [
+              "#22c55e",
+              "#ef4444"
+            ]
+          },
+          "title": "made_label",
+          "type": "nominal"
+        },
+        "fillOpacity": {
+          "value": 0.65
+        },
+        "opacity": {
+          "value": 1.0
+        },
+        "shape": {
+          "value": "M0.800,0.000 L0.785,0.156 L0.739,0.306 L0.665,0.444 L0.566,0.566 L0.444,0.665 L0.306,0.739 L0.156,0.785 L0.000,0.800 L-0.156,0.785 L-0.306,0.739 L-0.444,0.665 L-0.566,0.566 L-0.665,0.444 L-0.739,0.306 L-0.785,0.156 L-0.800,0.000 L-0.785,-0.156 L-0.739,-0.306 L-0.665,-0.444 L-0.566,-0.566 L-0.444,-0.665 L-0.306,-0.739 L-0.156,-0.785 L-0.000,-0.800 L0.156,-0.785 L0.306,-0.739 L0.444,-0.665 L0.566,-0.566 L0.665,-0.444 L0.739,-0.306 L0.785,-0.156 Z"
+        },
+        "size": {
+          "value": 50.26548245743668
+        },
+        "stroke": {
+          "field": "__ggsql_aes_stroke__",
+          "legend": {
+            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
+          },
+          "scale": {
+            "domain": [
+              "Made",
+              "Missed"
+            ],
+            "range": [
+              "#22c55e",
+              "#ef4444"
+            ]
+          },
+          "title": "made_label",
+          "type": "nominal"
+        },
+        "strokeWidth": {
+          "value": 1.3333333333333333
+        },
+        "x": {
+          "axis": {
+            "labelExpr": "datum.label == '100' ? '100' : datum.label == '-200' ? '-200' : datum.label == '-100' ? '-100' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
+            "values": [
+              -200.0,
+              -100.0,
+              0.0,
+              100.0,
+              200.0
+            ]
+          },
+          "field": "__ggsql_aes_pos1__",
+          "scale": {
+            "domain": [
+              -272.5,
+              266.5
+            ],
+            "zero": false
+          },
+          "title": "Court Width",
+          "type": "quantitative"
+        },
+        "y": {
+          "axis": {
+            "labelExpr": "datum.label == '100' ? '100' : datum.label == '300' ? '300' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
+            "values": [
+              0.0,
+              100.0,
+              200.0,
+              300.0
+            ]
+          },
+          "field": "__ggsql_aes_pos2__",
+          "scale": {
+            "domain": [
+              -31.05,
+              300.05
+            ],
+            "zero": false
+          },
+          "stack": null,
+          "title": "Distance from Basket",
+          "type": "quantitative"
+        }
+      },
+      "mark": {
+        "clip": true,
+        "filled": false,
+        "type": "point"
+      },
+      "transform": [
+        {
+          "filter": {
+            "equal": "__ggsql_layer_0__",
+            "field": "__ggsql_source__"
+          }
+        }
+      ]
+    }
+  ],
+  "title": "Knicks vs Cleveland — ECF Shot Chart",
+  "width": "container"
+};
+    spec.width = 800;
+    spec.height = 560;
+    vegaEmbed('#vis', spec, { actions: false, renderer: 'svg' }).catch(console.error);
+  </script>
+</body>
+</html>
