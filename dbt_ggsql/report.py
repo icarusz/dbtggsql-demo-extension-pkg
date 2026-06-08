@@ -43,7 +43,7 @@ def _spec_to_svg(vega_spec: str, is_paired: bool = False) -> str | None:
     if is_paired:
         cell_w, cell_h = 380, 260
     else:
-        cell_w, cell_h = 500, 300
+        cell_w, cell_h = 680, 340
 
     # Facet / concat specs carry a nested "spec" for the individual view.
     inner = spec.get("spec") or spec.get("layer")
@@ -68,7 +68,17 @@ def _spec_to_svg(vega_spec: str, is_paired: bool = False) -> str | None:
         )
         if result.returncode == 0 and result.stdout.strip():
             svg = result.stdout.strip()
-            # Make SVG responsive: replace fixed width/height attrs with 100%
+            # Widen the Vega clip rect to the full viewBox width so bars near
+            # the right edge of the plot area are never clipped.
+            vb_match = __import__("re").search(r'viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"', svg)
+            if vb_match:
+                vb_w, vb_h = vb_match.group(1), vb_match.group(2)
+                svg = __import__("re").sub(
+                    r'(<clipPath[^>]*>)\s*<rect x="0" y="0" width="[^"]*" height="[^"]*"/>',
+                    rf'\1<rect x="0" y="0" width="{vb_w}" height="{vb_h}"/>',
+                    svg,
+                )
+            # Make SVG responsive: remove fixed width, let height scale naturally
             svg = svg.replace(' width="', ' data-orig-width="', 1)
             svg = svg.replace(' height="', ' style="width:100%;height:auto;" height="', 1)
             return svg
