@@ -1,6 +1,6 @@
 """
 report.py — generates two outputs from a list of ChartResult objects:
-  1. output/visualizations.html  — self-contained summary grid of all charts
+  1. output/visualizations.html  — self-contained summary grid (SVGs inline, zero JS)
   2. visualizations.qmd          — Quarto document embedding all charts
 """
 
@@ -8,9 +8,76 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 
 from .runner import ChartResult
+
+
+# ── SVG pre-rendering ─────────────────────────────────────────────────────────
+
+def _spec_to_svg(vega_spec: str, is_paired: bool = False) -> str | None:
+    """
+    Render a Vega-Lite JSON spec to an SVG string using vl2svg.
+
+    For facet specs (team × side charts), width/height are set on the inner
+    view so each facet cell is sized correctly.  For simple specs, they sit
+    at the top level.
+
+    is_paired=True means the card shares a row with another card, so we use
+    a narrower cell width to avoid overflow.
+    """
+    vl2svg = shutil.which("vl2svg")
+    if vl2svg is None:
+        return None
+
+    try:
+        spec = json.loads(vega_spec)
+    except json.JSONDecodeError:
+        return None
+
+    # Decide target dimensions.  Paired cards each occupy ~half the viewport;
+    # solo cards are wider.  For facet specs the numbers apply to each cell.
+    if is_paired:
+        cell_w, cell_h = 380, 260
+    else:
+        cell_w, cell_h = 500, 300
+
+    # Facet / concat specs carry a nested "spec" for the individual view.
+    inner = spec.get("spec") or spec.get("layer")
+    if inner and isinstance(inner, dict):
+        inner["width"] = cell_w
+        inner["height"] = cell_h
+    else:
+        spec["width"] = cell_w
+        spec["height"] = cell_h
+
+    with tempfile.NamedTemporaryFile(
+        suffix=".json", mode="w", delete=False, encoding="utf-8"
+    ) as tmp:
+        json.dump(spec, tmp)
+        tmp_path = tmp.name
+
+    try:
+        result = subprocess.run(
+            [vl2svg, tmp_path],
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            svg = result.stdout.strip()
+            # Make SVG responsive: replace fixed width/height attrs with 100%
+            svg = svg.replace(' width="', ' data-orig-width="', 1)
+            svg = svg.replace(' height="', ' style="width:100%;height:auto;" height="', 1)
+            return svg
+    except Exception:
+        pass
+    finally:
+        os.unlink(tmp_path)
+
+    return None
 
 
 # ── visualizations.html ───────────────────────────────────────────────────────
@@ -21,9 +88,6 @@ _SUMMARY_HEAD = """\
 <head>
   <meta charset="utf-8"/>
   <title>visualizations · ggsql + dbt</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <style>
     :root {
       --teal:  #0A9396;
@@ -78,8 +142,8 @@ _SUMMARY_HEAD = """\
       letter-spacing: 0.03em;
       font-family: monospace;
     }
-    .vis-wrap { padding: 8px; }
-    .vis-wrap div { width: 100%; height: 380px; }
+    .vis-wrap { padding: 12px 8px 8px; }
+    .vis-wrap svg { width: 100%; height: auto; display: block; }
     footer {
       text-align: center;
       padding: 2em;
@@ -98,41 +162,29 @@ _SUMMARY_HEAD = """\
 <div class="grid">
 """
 
-_SUMMARY_CARD = """\
+_SUMMARY_CARD_SVG = """\
 <div class="card">
   <div class="card-title">{name}</div>
-  <div class="vis-wrap"><div id="vis-{idx}"></div></div>
+  <div class="vis-wrap">{svg}</div>
+</div>
+"""
+
+# Fallback card used when vl2svg is unavailable
+_SUMMARY_CARD_FALLBACK = """\
+<div class="card">
+  <div class="card-title">{name}</div>
+  <div class="vis-wrap" style="padding:1em;color:#64748b;font-size:.8rem;">
+    chart not rendered — install vl2svg: npm install -g vega-cli
+  </div>
 </div>
 """
 
 _SUMMARY_PAIR_OPEN = '<div class="pair-row">\n'
 _SUMMARY_PAIR_CLOSE = '</div>\n'
 
-_SUMMARY_SCRIPT_OPEN = """\
-</div>
-<footer>built by dbt-ggsql · charts rendered with vega-lite</footer>
-<script>
-"""
-
-_SUMMARY_SCRIPT_ENTRY = """\
-(function() {{
-  const spec = {spec};
-  // For facet/concat specs the inner view carries width/height;
-  // for simple specs width/height sit at the top level.
-  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
-  if (inner && typeof inner === 'object') {{
-    inner.width = 460;
-    inner.height = 260;
-  }} else {{
-    spec.width = 460;
-    spec.height = 260;
-  }}
-  vegaEmbed('#vis-{idx}', spec, {{ actions: false, renderer: 'svg' }}).catch(console.error);
-}})();
-"""
-
 _SUMMARY_TAIL = """\
-</script>
+</div>
+<footer>built by dbt-ggsql · charts pre-rendered with vega-lite</footer>
 </body>
 </html>
 """
@@ -155,11 +207,10 @@ def _group_charts(results: list[ChartResult]) -> list[list[ChartResult]]:
     while i < len(results):
         r = results[i]
         prefix = _chart_prefix(r.name)
-        # look ahead: does the next chart share this prefix?
         if (
             i + 1 < len(results)
             and _chart_prefix(results[i + 1].name) == prefix
-            and prefix != r.name          # guard: only pair if name actually has a suffix
+            and prefix != r.name
         ):
             groups.append([r, results[i + 1]])
             i += 2
@@ -169,18 +220,23 @@ def _group_charts(results: list[ChartResult]) -> list[list[ChartResult]]:
     return groups
 
 
+def _card_html(r: ChartResult, is_paired: bool) -> str:
+    svg = _spec_to_svg(r.vega_spec, is_paired=is_paired)
+    if svg:
+        return _SUMMARY_CARD_SVG.format(name=r.name, svg=svg)
+    return _SUMMARY_CARD_FALLBACK.format(name=r.name)
+
+
 def write_summary_html(
     results: list[ChartResult],
     project_root: str,
     output_path: str = os.path.join("output", "visualizations.html"),
 ) -> str:
-    """Write a self-contained summary HTML grid of all charts."""
+    """Write a self-contained summary HTML grid with pre-rendered SVG charts."""
     successful = [r for r in results if r.success]
     out_file = Path(project_root) / output_path
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
-    # assign a stable index to each chart for JS embed targets
-    idx_map = {r.name: i for i, r in enumerate(successful)}
     groups = _group_charts(successful)
 
     parts = [_SUMMARY_HEAD]
@@ -188,15 +244,10 @@ def write_summary_html(
         if len(group) == 2:
             parts.append(_SUMMARY_PAIR_OPEN)
             for r in group:
-                parts.append(_SUMMARY_CARD.format(name=r.name, idx=idx_map[r.name]))
+                parts.append(_card_html(r, is_paired=True))
             parts.append(_SUMMARY_PAIR_CLOSE)
         else:
-            r = group[0]
-            parts.append(_SUMMARY_CARD.format(name=r.name, idx=idx_map[r.name]))
-
-    parts.append(_SUMMARY_SCRIPT_OPEN)
-    for r in successful:
-        parts.append(_SUMMARY_SCRIPT_ENTRY.format(spec=r.vega_spec, idx=idx_map[r.name]))
+            parts.append(_card_html(group[0], is_paired=False))
 
     parts.append(_SUMMARY_TAIL)
     out_file.write_text("".join(parts), encoding="utf-8")
