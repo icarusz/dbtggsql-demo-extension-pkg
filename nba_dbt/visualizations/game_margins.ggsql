@@ -1,6 +1,5 @@
 SELECT playoff_game_num, margin, round, team
 FROM 'exports/mart_game_scores.parquet'
-WHERE COALESCE(NULLIF(getenv('NBA_TEAM'), ''), team) = team
 VISUALISE playoff_game_num AS x, margin AS y, round AS color
 DRAW bar
   SETTING position => 'identity'

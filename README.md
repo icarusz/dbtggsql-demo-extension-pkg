@@ -73,7 +73,9 @@ open nba_dbt/output/visualizations.html
 
 **[visualizations.html →](https://htmlpreview.github.io/?https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_visualizations.html)** (`--output html`) — self-contained SVG grid: shot charts, efficiency comparisons, and player scatter plots. No JavaScript, works in any static viewer.
 
-**[visualizations.qmd →](https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/nba_dbt/visualizations.qmd)** (`--output qmd`) — the Quarto source with one live ggsql cell per chart. SQL is visible via code-fold; render locally with `quarto render` using the ggsql kernel.
+**[visualizations_qmd.html →](https://htmlpreview.github.io/?https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_visualizations_qmd.html)** (`--output qmd`, rendered) — the Quarto output: one chart per section, SQL visible via `▶ show query` code-fold.
+
+**[visualizations.qmd →](https://github.com/icarusz/dbtggsql-demo-extension-pkg/blob/main/docs/sample_visualizations.qmd)** — the raw Quarto source with live ggsql cells. Render locally with `quarto render` using the ggsql kernel.
 
 ## related
 
