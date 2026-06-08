@@ -79,7 +79,7 @@ _SUMMARY_HEAD = """\
       font-family: monospace;
     }
     .vis-wrap { padding: 8px; }
-    .vis-wrap div { width: 100%; height: 340px; }
+    .vis-wrap div { width: 100%; height: 380px; }
     footer {
       text-align: center;
       padding: 2em;
@@ -117,8 +117,16 @@ _SUMMARY_SCRIPT_OPEN = """\
 _SUMMARY_SCRIPT_ENTRY = """\
 (function() {{
   const spec = {spec};
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {{
+    inner.width = 460;
+    inner.height = 260;
+  }} else {{
+    spec.width = 460;
+    spec.height = 260;
+  }}
   vegaEmbed('#vis-{idx}', spec, {{ actions: false, renderer: 'svg' }}).catch(console.error);
 }})();
 """

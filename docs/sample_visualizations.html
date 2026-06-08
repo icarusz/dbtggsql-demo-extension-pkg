@@ -61,7 +61,7 @@
       font-family: monospace;
     }
     .vis-wrap { padding: 8px; }
-    .vis-wrap div { width: 100%; height: 340px; }
+    .vis-wrap div { width: 100%; height: 380px; }
     footer {
       text-align: center;
       padding: 2em;
@@ -287,11 +287,11 @@
               "type": "nominal"
             },
             {
-              "field": "__ggsql_aes_facet1__",
+              "field": "__ggsql_aes_fill__",
               "type": "nominal"
             },
             {
-              "field": "__ggsql_aes_fill__",
+              "field": "__ggsql_aes_facet1__",
               "type": "nominal"
             }
           ],
@@ -336,7 +336,7 @@
           },
           "x": {
             "axis": {
-              "labelExpr": "datum.label == 'Defense' ? 'Defense' : datum.label == 'Offense' ? 'Offense' : datum.label"
+              "labelExpr": "datum.label == 'Offense' ? 'Offense' : datum.label == 'Defense' ? 'Defense' : datum.label"
             },
             "field": "__ggsql_aes_pos1__",
             "scale": {
@@ -361,7 +361,7 @@
           },
           "y": {
             "axis": {
-              "labelExpr": "datum.label == '20' ? '20' : datum.label == '0' ? '0' : datum.label == '40' ? '40' : datum.label == '30' ? '30' : datum.label == '10' ? '10' : datum.label",
+              "labelExpr": "datum.label == '0' ? '0' : datum.label == '30' ? '30' : datum.label == '40' ? '40' : datum.label == '20' ? '20' : datum.label == '10' ? '10' : datum.label",
               "values": [
                 0.0,
                 10.0,
@@ -407,8 +407,16 @@
   },
   "title": "3-Point Shooting — Regular Season vs Playoffs"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-0', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -645,7 +653,7 @@
           },
           "y": {
             "axis": {
-              "labelExpr": "datum.label == '50' ? '50' : datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label",
+              "labelExpr": "datum.label == '0' ? '0' : datum.label == '100' ? '100' : datum.label == '50' ? '50' : datum.label",
               "values": [
                 0.0,
                 50.0,
@@ -689,8 +697,16 @@
   },
   "title": "Scoring — Regular Season vs Playoffs"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-1', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -933,11 +949,11 @@
       "encoding": {
         "detail": [
           {
-            "field": "__ggsql_aes_stroke__",
+            "field": "__ggsql_aes_fill__",
             "type": "nominal"
           },
           {
-            "field": "__ggsql_aes_fill__",
+            "field": "__ggsql_aes_stroke__",
             "type": "nominal"
           }
         ],
@@ -974,7 +990,7 @@
         "stroke": {
           "field": "__ggsql_aes_stroke__",
           "legend": {
-            "labelExpr": "datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label"
+            "labelExpr": "datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label"
           },
           "scale": {
             "domain": [
@@ -1014,7 +1030,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '5' ? '5' : datum.label == '2' ? '2' : datum.label == '4' ? '4' : datum.label == '7' ? '7' : datum.label == '3' ? '3' : datum.label == '6' ? '6' : datum.label",
+            "labelExpr": "datum.label == '7' ? '7' : datum.label == '5' ? '5' : datum.label == '6' ? '6' : datum.label == '3' ? '3' : datum.label == '4' ? '4' : datum.label == '2' ? '2' : datum.label",
             "values": [
               2.0,
               3.0,
@@ -1090,7 +1106,7 @@
         "stroke": {
           "field": "__ggsql_aes_stroke__",
           "legend": {
-            "labelExpr": "datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label"
+            "labelExpr": "datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label"
           },
           "scale": {
             "domain": [
@@ -1134,7 +1150,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '5' ? '5' : datum.label == '2' ? '2' : datum.label == '4' ? '4' : datum.label == '7' ? '7' : datum.label == '3' ? '3' : datum.label == '6' ? '6' : datum.label",
+            "labelExpr": "datum.label == '7' ? '7' : datum.label == '5' ? '5' : datum.label == '6' ? '6' : datum.label == '3' ? '3' : datum.label == '4' ? '4' : datum.label == '2' ? '2' : datum.label",
             "values": [
               2.0,
               3.0,
@@ -1184,8 +1200,16 @@
   "title": "Playoff Scoring vs Assists",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-2', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -4093,7 +4117,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == '100' ? '100' : datum.label == '-200' ? '-200' : datum.label == '-100' ? '-100' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
+            "labelExpr": "datum.label == '100' ? '100' : datum.label == '-200' ? '-200' : datum.label == '-100' ? '-100' : datum.label == '200' ? '200' : datum.label == '0' ? '0' : datum.label",
             "values": [
               -200.0,
               -100.0,
@@ -4115,7 +4139,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '100' ? '100' : datum.label == '300' ? '300' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
+            "labelExpr": "datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label == '100' ? '100' : datum.label == '300' ? '300' : datum.label",
             "values": [
               0.0,
               100.0,
@@ -4154,8 +4178,16 @@
   "title": "Knicks vs Cleveland — ECF Shot Chart",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-3', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -8274,11 +8306,11 @@
       "encoding": {
         "detail": [
           {
-            "field": "__ggsql_aes_stroke__",
+            "field": "__ggsql_aes_fill__",
             "type": "nominal"
           },
           {
-            "field": "__ggsql_aes_fill__",
+            "field": "__ggsql_aes_stroke__",
             "type": "nominal"
           }
         ],
@@ -8315,7 +8347,7 @@
         "stroke": {
           "field": "__ggsql_aes_stroke__",
           "legend": {
-            "labelExpr": "datum.label == 'Missed' ? 'Missed' : datum.label == 'Made' ? 'Made' : datum.label"
+            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
           },
           "scale": {
             "domain": [
@@ -8335,7 +8367,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == '-200' ? '-200' : datum.label == '100' ? '100' : datum.label == '200' ? '200' : datum.label == '-100' ? '-100' : datum.label == '0' ? '0' : datum.label",
+            "labelExpr": "datum.label == '-100' ? '-100' : datum.label == '100' ? '100' : datum.label == '-200' ? '-200' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
             "values": [
               -200.0,
               -100.0,
@@ -8357,7 +8389,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '100' ? '100' : datum.label == '200' ? '200' : datum.label == '300' ? '300' : datum.label == '0' ? '0' : datum.label",
+            "labelExpr": "datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label == '300' ? '300' : datum.label == '100' ? '100' : datum.label",
             "values": [
               0.0,
               100.0,
@@ -8396,8 +8428,16 @@
   "title": "Knicks vs Atlanta — R1 Shot Chart",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-4', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -11161,7 +11201,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == '200' ? '200' : datum.label == '0' ? '0' : datum.label == '-200' ? '-200' : datum.label == '-100' ? '-100' : datum.label == '100' ? '100' : datum.label",
+            "labelExpr": "datum.label == '-100' ? '-100' : datum.label == '0' ? '0' : datum.label == '-200' ? '-200' : datum.label == '200' ? '200' : datum.label == '100' ? '100' : datum.label",
             "values": [
               -200.0,
               -100.0,
@@ -11183,7 +11223,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
+            "labelExpr": "datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label == '100' ? '100' : datum.label",
             "values": [
               0.0,
               100.0,
@@ -11221,8 +11261,16 @@
   "title": "Knicks vs Philadelphia — R2 Shot Chart",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-5', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -14637,18 +14685,18 @@
       "encoding": {
         "detail": [
           {
-            "field": "__ggsql_aes_stroke__",
+            "field": "__ggsql_aes_fill__",
             "type": "nominal"
           },
           {
-            "field": "__ggsql_aes_fill__",
+            "field": "__ggsql_aes_stroke__",
             "type": "nominal"
           }
         ],
         "fill": {
           "field": "__ggsql_aes_fill__",
           "legend": {
-            "labelExpr": "datum.label == 'Missed' ? 'Missed' : datum.label == 'Made' ? 'Made' : datum.label"
+            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
           },
           "scale": {
             "domain": [
@@ -14678,7 +14726,7 @@
         "stroke": {
           "field": "__ggsql_aes_stroke__",
           "legend": {
-            "labelExpr": "datum.label == 'Missed' ? 'Missed' : datum.label == 'Made' ? 'Made' : datum.label"
+            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
           },
           "scale": {
             "domain": [
@@ -14698,7 +14746,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == '-100' ? '-100' : datum.label == '-200' ? '-200' : datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label",
+            "labelExpr": "datum.label == '200' ? '200' : datum.label == '-200' ? '-200' : datum.label == '-100' ? '-100' : datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label",
             "values": [
               -200.0,
               -100.0,
@@ -14720,7 +14768,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '100' ? '100' : datum.label == '300' ? '300' : datum.label == '200' ? '200' : datum.label == '0' ? '0' : datum.label",
+            "labelExpr": "datum.label == '300' ? '300' : datum.label == '200' ? '200' : datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label",
             "values": [
               0.0,
               100.0,
@@ -14759,8 +14807,16 @@
   "title": "Spurs vs Portland — R1 Shot Chart",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-6', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -19778,7 +19834,7 @@
         "fill": {
           "field": "__ggsql_aes_fill__",
           "legend": {
-            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
+            "labelExpr": "datum.label == 'Missed' ? 'Missed' : datum.label == 'Made' ? 'Made' : datum.label"
           },
           "scale": {
             "domain": [
@@ -19808,7 +19864,7 @@
         "stroke": {
           "field": "__ggsql_aes_stroke__",
           "legend": {
-            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
+            "labelExpr": "datum.label == 'Missed' ? 'Missed' : datum.label == 'Made' ? 'Made' : datum.label"
           },
           "scale": {
             "domain": [
@@ -19828,7 +19884,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == '-100' ? '-100' : datum.label == '100' ? '100' : datum.label == '200' ? '200' : datum.label == '-200' ? '-200' : datum.label == '0' ? '0' : datum.label",
+            "labelExpr": "datum.label == '100' ? '100' : datum.label == '-100' ? '-100' : datum.label == '-200' ? '-200' : datum.label == '200' ? '200' : datum.label == '0' ? '0' : datum.label",
             "values": [
               -200.0,
               -100.0,
@@ -19850,7 +19906,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label == '100' ? '100' : datum.label == '300' ? '300' : datum.label == '400' ? '400' : datum.label",
+            "labelExpr": "datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label == '300' ? '300' : datum.label == '400' ? '400' : datum.label == '200' ? '200' : datum.label",
             "values": [
               0.0,
               100.0,
@@ -19890,8 +19946,16 @@
   "title": "Spurs vs OKC — WCF Shot Chart",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-7', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -24154,18 +24218,18 @@
       "encoding": {
         "detail": [
           {
-            "field": "__ggsql_aes_fill__",
+            "field": "__ggsql_aes_stroke__",
             "type": "nominal"
           },
           {
-            "field": "__ggsql_aes_stroke__",
+            "field": "__ggsql_aes_fill__",
             "type": "nominal"
           }
         ],
         "fill": {
           "field": "__ggsql_aes_fill__",
           "legend": {
-            "labelExpr": "datum.label == 'Missed' ? 'Missed' : datum.label == 'Made' ? 'Made' : datum.label"
+            "labelExpr": "datum.label == 'Made' ? 'Made' : datum.label == 'Missed' ? 'Missed' : datum.label"
           },
           "scale": {
             "domain": [
@@ -24215,7 +24279,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == '0' ? '0' : datum.label == '-100' ? '-100' : datum.label == '-200' ? '-200' : datum.label == '100' ? '100' : datum.label == '200' ? '200' : datum.label",
+            "labelExpr": "datum.label == '-200' ? '-200' : datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label == '-100' ? '-100' : datum.label == '200' ? '200' : datum.label",
             "values": [
               -200.0,
               -100.0,
@@ -24237,7 +24301,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label == '200' ? '200' : datum.label == '300' ? '300' : datum.label",
+            "labelExpr": "datum.label == '100' ? '100' : datum.label == '0' ? '0' : datum.label == '300' ? '300' : datum.label == '200' ? '200' : datum.label",
             "values": [
               0.0,
               100.0,
@@ -24276,8 +24340,16 @@
   "title": "Spurs vs Minnesota — R2 Shot Chart",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-8', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 (function() {
@@ -24471,7 +24543,7 @@
         "fill": {
           "field": "__ggsql_aes_fill__",
           "legend": {
-            "labelExpr": "datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label"
+            "labelExpr": "datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label"
           },
           "scale": {
             "domain": [
@@ -24492,7 +24564,7 @@
         "stroke": {
           "field": "__ggsql_aes_stroke__",
           "legend": {
-            "labelExpr": "datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label"
+            "labelExpr": "datum.label == 'San Antonio Spurs' ? 'San Antonio Spurs' : datum.label == 'New York Knicks' ? 'New York Knicks' : datum.label"
           },
           "scale": {
             "domain": [
@@ -24509,7 +24581,7 @@
         },
         "x": {
           "axis": {
-            "labelExpr": "datum.label == 'Left Corner 3' ? 'Left Corner 3' : datum.label == 'Above the Break 3' ? 'Above the Break 3' : datum.label == 'Mid-Range' ? 'Mid-Range' : datum.label == 'Restricted Area' ? 'Restricted Area' : datum.label == 'Right Corner 3' ? 'Right Corner 3' : datum.label == 'In The Paint (Non-RA)' ? 'In The Paint (Non-RA)' : datum.label"
+            "labelExpr": "datum.label == 'Restricted Area' ? 'Restricted Area' : datum.label == 'Above the Break 3' ? 'Above the Break 3' : datum.label == 'Right Corner 3' ? 'Right Corner 3' : datum.label == 'Left Corner 3' ? 'Left Corner 3' : datum.label == 'Mid-Range' ? 'Mid-Range' : datum.label == 'In The Paint (Non-RA)' ? 'In The Paint (Non-RA)' : datum.label"
           },
           "field": "__ggsql_aes_pos1__",
           "scale": {
@@ -24538,7 +24610,7 @@
         },
         "y": {
           "axis": {
-            "labelExpr": "datum.label == '60' ? '60' : datum.label == '0' ? '0' : datum.label == '20' ? '20' : datum.label == '40' ? '40' : datum.label",
+            "labelExpr": "datum.label == '60' ? '60' : datum.label == '0' ? '0' : datum.label == '40' ? '40' : datum.label == '20' ? '20' : datum.label",
             "values": [
               0.0,
               20.0,
@@ -24583,8 +24655,16 @@
   "title": "Playoff FG% by Shot Zone",
   "width": "container"
 };
-  spec.width = "container";
-  spec.height = 300;
+  // For facet/concat specs the inner view carries width/height;
+  // for simple specs width/height sit at the top level.
+  const inner = (spec.spec || spec.vconcat || spec.hconcat || spec.concat) ? spec.spec : spec;
+  if (inner && typeof inner === 'object') {
+    inner.width = 460;
+    inner.height = 260;
+  } else {
+    spec.width = 460;
+    spec.height = 260;
+  }
   vegaEmbed('#vis-9', spec, { actions: false, renderer: 'svg' }).catch(console.error);
 })();
 </script>
