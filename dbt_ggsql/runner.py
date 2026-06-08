@@ -5,9 +5,12 @@ the ggsql CLI, writes individual HTML charts, and returns specs for summary.
 
 from __future__ import annotations
 
+import json
 import os
+import re
 import shutil
 import subprocess
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -27,40 +30,79 @@ _HTML_TEMPLATE = """\
 <head>
   <meta charset="utf-8"/>
   <title>{title}</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <style>
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{
       background: #f8fafc;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       min-height: 100vh;
       font-family: system-ui, sans-serif;
+      padding: 32px 16px;
     }}
-    #vis {{
+    .chart-wrap {{
       background: white;
       border-radius: 8px;
       box-shadow: 0 2px 12px #0000001a;
       padding: 24px;
-      width: 860px;
-      height: 620px;
+      max-width: 900px;
+      width: 100%;
     }}
+    .chart-wrap svg {{ width: 100%; height: auto; display: block; }}
   </style>
 </head>
 <body>
-  <div id="vis"></div>
-  <script>
-    const spec = {spec};
-    spec.width = 800;
-    spec.height = 560;
-    vegaEmbed('#vis', spec, {{ actions: false, renderer: 'svg' }}).catch(console.error);
-  </script>
+  <div class="chart-wrap">{svg}</div>
 </body>
 </html>
 """
+
+
+def _spec_to_svg_individual(vega_spec: str) -> str | None:
+    """Pre-render a Vega-Lite spec to SVG for a standalone chart page."""
+    vl2svg_bin = shutil.which("vl2svg")
+    if vl2svg_bin is None:
+        return None
+    try:
+        spec = json.loads(vega_spec)
+    except json.JSONDecodeError:
+        return None
+
+    # Set fixed dimensions: use inner spec for facet layouts
+    inner = spec.get("spec")
+    if inner and isinstance(inner, dict):
+        inner["width"] = 700
+        inner["height"] = 480
+    else:
+        spec["width"] = 800
+        spec["height"] = 560
+
+    with tempfile.NamedTemporaryFile(suffix=".json", mode="w", delete=False, encoding="utf-8") as tmp:
+        json.dump(spec, tmp)
+        tmp_path = tmp.name
+
+    try:
+        result = subprocess.run([vl2svg_bin, tmp_path], capture_output=True, text=True)
+        if result.returncode == 0 and result.stdout.strip():
+            svg = result.stdout.strip()
+            # Expand clip rect to full viewBox so right-edge marks aren't hidden
+            vb = re.search(r'viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"', svg)
+            if vb:
+                svg = re.sub(
+                    r'(<clipPath[^>]*>)\s*<rect x="0" y="0" width="[^"]*" height="[^"]*"/>',
+                    rf'\1<rect x="0" y="0" width="{vb.group(1)}" height="{vb.group(2)}"/>',
+                    svg,
+                )
+            # Make responsive
+            svg = svg.replace(' width="', ' data-orig-width="', 1)
+            svg = svg.replace(' height="', ' style="width:100%;height:auto;" height="', 1)
+            return svg
+    except Exception:
+        pass
+    finally:
+        os.unlink(tmp_path)
+    return None
 
 
 def run_visualizations(
@@ -100,7 +142,11 @@ def run_visualizations(
             continue
 
         spec = proc.stdout.strip()
-        html = _HTML_TEMPLATE.format(title=name, spec=spec)
+        svg = _spec_to_svg_individual(spec)
+        if svg is None:
+            # vl2svg unavailable — fall back to a plain error page
+            svg = "<p style='color:#64748b;padding:1em'>vl2svg not found — install with: npm install -g vega-cli</p>"
+        html = _HTML_TEMPLATE.format(title=name, svg=svg)
         out_file = out_path / f"{name}.html"
         out_file.write_text(html, encoding="utf-8")
 
